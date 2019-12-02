@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+/**
+ * 电子合同签约-电子签名约定书
+ */
 public class ESignatureTest {
 
     static String user_id="";
@@ -17,7 +20,7 @@ public class ESignatureTest {
                 .header("Cookie" , GetCookie.getCookie2())
                 .formParam("funcNo", "102010")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .extract().response();
@@ -36,7 +39,7 @@ public class ESignatureTest {
                 .formParam("funcNo", "102027")
                 .formParam("user_id", user_id)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }

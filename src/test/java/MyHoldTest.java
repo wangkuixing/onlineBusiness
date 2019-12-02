@@ -4,6 +4,9 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+/**
+ * 我的持仓
+ */
 public class MyHoldTest {
 
     String custid="1300022253";
@@ -17,7 +20,7 @@ public class MyHoldTest {
                 .header("Cookie" , GetCookie.getCookie())
                 .formParam("funcNo", "100909")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("DataSet[0].stkcode", equalTo("000001"));
@@ -32,7 +35,7 @@ public class MyHoldTest {
                 .header("Cookie" , GetCookie.getCookie())
                 .formParam("funcNo", "100914")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -46,7 +49,7 @@ public class MyHoldTest {
                 .header("Cookie" , GetCookie.getCookie())
                 .formParam("funcNo", "100919")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -63,7 +66,7 @@ public class MyHoldTest {
                 .formParam("zzrq", "20190726")
                 .formParam("zt", "1")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -85,7 +88,7 @@ public class MyHoldTest {
                 .formParam("curPage", "1")
                 .formParam("numPerPage", "15")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -99,7 +102,7 @@ public class MyHoldTest {
                 .header("Cookie" , GetCookie.getCookie())
                 .formParam("funcNo", "100925")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("results[0].ext_org", equalTo("2003"));
@@ -114,7 +117,7 @@ public class MyHoldTest {
                 .header("Cookie" , GetCookie.getCookie())
                 .formParam("funcNo", "101110")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("查询客户电子合同签约情况成功!"));
@@ -130,7 +133,7 @@ public class MyHoldTest {
                 .formParam("funcNo", "160210")
                 .formParam("custid", custid)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("results[0].openDate", equalTo("20140924"));

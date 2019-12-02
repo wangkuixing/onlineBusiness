@@ -3,8 +3,13 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+/**
+ * 交易权限开通
+ */
 public class PermissionTest {
 
+    String custid="1100001235";
+    String secuid="A122338917";
     @Test
     void test102013(){
         //查询客户证券账户
@@ -14,7 +19,7 @@ public class PermissionTest {
                 .header("Cookie" , GetCookie.getCookie())
                 .formParam("funcNo", "102013")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("查询用户账户成功"))
@@ -30,7 +35,7 @@ public class PermissionTest {
                 .header("Cookie" , GetCookie.getCookie())
                 .formParam("funcNo", "100912")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("results[0].cybAgmtExist", equalTo("1"));
@@ -45,7 +50,7 @@ public class PermissionTest {
                 .header("Cookie" , GetCookie.getCookie2())
                 .formParam("funcNo", "100921")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -60,7 +65,7 @@ public class PermissionTest {
                 .formParam("funcNo", "101801")
                 .formParam("market","1")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("证券账号权限查询成功"));
@@ -78,7 +83,7 @@ public class PermissionTest {
                 .formParam("type_code","ygt_zqaccountprotcl")
                 .formParam("agree_no","5005")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("调用成功"));
@@ -94,7 +99,7 @@ public class PermissionTest {
                 .formParam("funcNo", "100926")
                 .formParam("operway","01345efgdhij")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("results[0].msgok", equalTo("修改操作方式成功"));
@@ -110,7 +115,7 @@ public class PermissionTest {
                 .formParam("funcNo", "100927")
                 .formParam("power","hij")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("调用成功"));
@@ -124,9 +129,9 @@ public class PermissionTest {
                 .filter(SignAgreementTest.myFilter)
                 .header("Cookie" , GetCookie.getCookie2())
                 .formParam("funcNo", "101805")
-                .formParam("secuid","A122338917")
+                .formParam("secuid",secuid)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("2"));
@@ -141,10 +146,10 @@ public class PermissionTest {
                 .header("Cookie" , GetCookie.getCookie2())
                 .formParam("funcNo", "100904")
                 .formParam("riskkind","3")
-                .formParam("trade_no","1100001235")
+                .formParam("trade_no",custid)
                 .formParam("branch_no","0012")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -158,14 +163,14 @@ public class PermissionTest {
                 .header("Cookie" , GetCookie.getCookie2())
                 .formParam("funcNo", "101802")
                 .formParam("market","1")
-                .formParam("secuid","A122338917")
+                .formParam("secuid",secuid)
                 .formParam("powertype","4")
                 .formParam("fundasset","")
                 .formParam("is_check","%E5%B7%B2%E7%AD%BE%E7%BD%B2")
                 .formParam("is_warning","%E5%B7%B2%E7%AD%BE%E7%BD%B2")
                 .formParam("rating_name","%E7%9B%B8%E5%AF%B9%E7%A7%AF%E6%9E%81%E5%9E%8B")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("权限开通成功"));

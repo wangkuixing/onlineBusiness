@@ -2,7 +2,11 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * login and ...
+ */
 public class SignedJournalTest {
+    String custid="1100009671";
 
     @Test
     void testQuery(){
@@ -11,31 +15,21 @@ public class SignedJournalTest {
                 .log().all()
                 .queryParam("funcNo", "160210")
 //                .queryParam("custid", "1300052059")
-                .queryParam("custid", "1100009671")
+                .queryParam("custid", custid)
                 .queryParam("login_test", 1)
-//                .header("Host","t0st.ytzq.com:8443")
-//                .header("Cache-Control", "max-age=0")
-//                .header("Upgrade-Insecure-Requests","1")
-//                .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36")
-//                .header("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
-//                .header("Accept-Language","zh-CN,zh;q=0.9")
-////                .header("Connection","Keep-Alive")
-//                .header("Accept-Encoding","gzip,deflate")
-//                .header("Cookie", "Hm_lvt_9e03021ce3af82443836664867b17568=1562546083,1562809092,1563152407,1563585248; tpeGXMgf0ccK871=KndUeoT67VigJbiON5cuDplUXGUOk.bqhyZPf0lUlEAtQaqOAu77KsUqlbJ4.PF7atskPA984SR45ds6izbIePVUTQpuHxDPHFJ6U_FXsmJNq")
         .when()
-                .get("http://t0st.ytzq.com:8443/web/bus/json")
+                .get("url")
         .then().log().all()
                 .statusCode(200);
     }
 
     @Test
     void testSignRecord(){
-
         given()
                 .log().all()
                 .queryParam("funcNo", "160203")
 //                .queryParam("custid", "1300052059")
-                .queryParam("custid", "1100009671")
+                .queryParam("custid", custid)
                 .queryParam("login_test", 1)
 //                .header("Host","t0st.ytzq.com:8443")
                 .header("Cache-Control", "max-age=0")
@@ -47,37 +41,26 @@ public class SignedJournalTest {
                 .header("Accept-Encoding","gzip,deflate")
 //                .header("Cookie", "Hm_lvt_9e03021ce3af82443836664867b17568=1562546083,1562809092,1563152407,1563585248; tpeGXMgf0ccK871=KndUeoT67VigJbiON5cuDplUXGUOk.bqhyZPf0lUlEAtQaqOAu77KsUqlbJ4.PF7atskPA984SR45ds6izbIePVUTQpuHxDPHFJ6U_FXsmJNq")
                 .when()
-                .get("http://t0st.ytzq.com:8443/web/bus/json")
+                .get("url")
                 .then().log().all()
                 .statusCode(200);
     }
 
     @Test
     void testSummary(){
-
         given()
                 .log().all()
                 .queryParam("funcNo", "160101")
-                .queryParam("trade_no", "1100009671")
+                .queryParam("trade_no", custid)
                 .queryParam("login_test", 1)
-//                .header("Host","t0st.ytzq.com:8443")
-//                .header("Cache-Control", "max-age=0")
-//                .header("Upgrade-Insecure-Requests","1")
-//                .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36")
-//                .header("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
-//                .header("Accept-Language","zh-CN,zh;q=0.9")
-////                .header("Connection","Keep-Alive")
-//                .header("Accept-Encoding","gzip,deflate")
-//                .header("Cookie", "Hm_lvt_9e03021ce3af82443836664867b17568=1562546083,1562809092,1563152407,1563585248; tpeGXMgf0ccK871=KndUeoT67VigJbiON5cuDplUXGUOk.bqhyZPf0lUlEAtQaqOAu77KsUqlbJ4.PF7atskPA984SR45ds6izbIePVUTQpuHxDPHFJ6U_FXsmJNq")
                 .when()
-                .get("http://t0st.ytzq.com:8443/web/bus/json")
+                .get("url")
                 .then().log().all()
                 .statusCode(200);
     }
 
     @Test
     void testLogin(){
-
         given()
                 .log().all()
                 .queryParam("funcNo", "100201")
@@ -92,17 +75,8 @@ public class SignedJournalTest {
                 .queryParam("user_ip","")
                 .queryParam("user_agent","")
                 .queryParam("")
-//                .header("Host","t0st.ytzq.com:8443")
-//                .header("Cache-Control", "max-age=0")
-//                .header("Upgrade-Insecure-Requests","1")
-//                .header("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36")
-//                .header("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
-//                .header("Accept-Language","zh-CN,zh;q=0.9")
-////                .header("Connection","Keep-Alive")
-//                .header("Accept-Encoding","gzip,deflate")
-//                .header("Cookie", "Hm_lvt_9e03021ce3af82443836664867b17568=1562546083,1562809092,1563152407,1563585248; tpeGXMgf0ccK871=KndUeoT67VigJbiON5cuDplUXGUOk.bqhyZPf0lUlEAtQaqOAu77KsUqlbJ4.PF7atskPA984SR45ds6izbIePVUTQpuHxDPHFJ6U_FXsmJNq")
                 .when()
-                .get("http://t0st.ytzq.com:8443/web/bus/json")
+                .get("url")
                 .then().log().all()
                 .statusCode(200);
     }

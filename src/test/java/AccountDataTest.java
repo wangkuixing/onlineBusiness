@@ -3,6 +3,9 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.*;
 
+/**
+ * 账户资料
+ */
 public class AccountDataTest {
     String custid="1300022253";
     String fundid="1300022253";
@@ -17,7 +20,7 @@ public class AccountDataTest {
                 .queryParam("trade_no", custid)
                 .queryParam("branch_no", "0013")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post(GlobalConfig.url)
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -32,7 +35,7 @@ public class AccountDataTest {
                 .queryParam("funcNo", "100947")
                 .queryParam("trade_no", custid)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("results[0].ext_org",equalTo("2003"));
@@ -48,7 +51,7 @@ public class AccountDataTest {
                 .queryParam("funcNo", "101001")
                 .queryParam("trade_no", custid)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -63,7 +66,7 @@ public class AccountDataTest {
                 .queryParam("funcNo", "100966")
                 .queryParam("trade_no", custid)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -79,7 +82,7 @@ public class AccountDataTest {
                 .queryParam("trade_no", custid)
                 .queryParam("id_type", "00")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -96,7 +99,7 @@ public class AccountDataTest {
                 .queryParam("branch_no", "0013")
                 .queryParam("riskkind", "3")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("results[0].result",containsString("型"));

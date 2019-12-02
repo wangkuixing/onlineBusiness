@@ -4,10 +4,14 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+/**
+ * 权限办理-港股通权限开通
+ */
 public class GgtTest {
 
     //testOrder:104902-104901-104903-104905-104906-104910-104907-104909
     static Integer current_step;
+
     @Test
     void test104901(){
         //港股通权限开通-获取current_step，判断当前进行到哪一步
@@ -17,7 +21,7 @@ public class GgtTest {
                 .header("Cookie" , GetCookie.getCookie2())
                 .formParam("funcNo", "104901")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("操作成功"))
@@ -39,7 +43,7 @@ public class GgtTest {
                 .formParam("sh_a", "1")
                 .formParam("sz_a", "1")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("操作成功"));
@@ -57,7 +61,7 @@ public class GgtTest {
                     .formParam("funcNo", "104903")
                     .formParam("investortype", "0")
                     .when()
-                    .post("http://t0st.ytzq.com:8443/web/bus/json")
+                    .post("url")
                     .then().log().all()
                     .statusCode(200).body("error_no", equalTo("0"))
                     .body("error_info", equalTo("操作成功"));
@@ -78,7 +82,7 @@ public class GgtTest {
                     .formParam("funcNo", "104904")
                     .formParam("investortype", "0")
                     .when()
-                    .post("http://t0st.ytzq.com:8443/web/bus/json")
+                    .post("url")
                     .then().log().all()
                     .statusCode(200).body("error_no", equalTo("0"))
                     .body("error_info", equalTo("操作成功"));
@@ -100,7 +104,7 @@ public class GgtTest {
                     .formParam("funcNo", "104905")
                     .formParam("answer", "%7B%221%22%3A%222%22%2C%222%22%3A%223%22%2C%223%22%3A%222%22%2C%224%22%3A%224%22%2C%225%22%3A%223%22%2C%226%22%3A%221%22%2C%227%22%3A%222%22%2C%228%22%3A%223%22%2C%229%22%3A%223%22%2C%2210%22%3A%223%22%2C%2211%22%3A%222%22%2C%2212%22%3A%222%22%2C%2213%22%3A%222%22%2C%2214%22%3A%222%22%2C%2215%22%3A%222%22%2C%2216%22%3A%222%22%2C%2217%22%3A%22%22%2C%2218%22%3A%222%22%2C%2219%22%3A%22%22%2C%2220%22%3A%222%22%2C%2221%22%3A%223%22%7D")
                     .when()
-                    .post("http://t0st.ytzq.com:8443/web/bus/json")
+                    .post("url")
                     .then().log().all()
                     .statusCode(200).body("error_no", equalTo("0"))
                     .body("error_info", equalTo("操作成功"));
@@ -122,7 +126,7 @@ public class GgtTest {
                     .formParam("funcNo", "104906")
                     .formParam("answer", "A%2CC%2CA%2CD%2CA%2CD%2CB%2CC%2CD%2CA%2C1%2C0%2C0%2C1%2C1%2C1%2C0%2C1%2C1%2C0")
                     .when()
-                    .post("http://t0st.ytzq.com:8443/web/bus/json")
+                    .post("url")
                     .then().log().all()
                     .statusCode(200).body("error_no", equalTo("0"))
                     .body("error_info", equalTo("评估通过"));
@@ -145,7 +149,7 @@ public class GgtTest {
                     .formParam("no_match_biz_deal", "")
                     .formParam("match_biz_deal", "1")
                     .when()
-                    .post("http://t0st.ytzq.com:8443/web/bus/json")
+                    .post("url")
                     .then().log().all()
                     .statusCode(200).body("error_no", equalTo("0"))
                     .body("error_info", equalTo("设置不适当确认签署标识成功"));
@@ -165,7 +169,7 @@ public class GgtTest {
                 .header("Cookie" , GetCookie.getCookie2())
                 .formParam("funcNo", "104907")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("操作成功"))
@@ -187,7 +191,7 @@ public class GgtTest {
                     .header("Cookie" , GetCookie.getCookie2())
                     .formParam("funcNo", "104909")
                     .when()
-                    .post("http://t0st.ytzq.com:8443/web/bus/json")
+                    .post("url")
                     .then().log().all()
                     .statusCode(200).body("error_no", equalTo("0"))
                     .body("error_info", equalTo("操作成功"));

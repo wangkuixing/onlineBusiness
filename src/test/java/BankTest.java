@@ -3,7 +3,11 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+/**
+ * 三方存管业务
+ */
 public class BankTest {
+    String custid="1100001022";
 
     @Test
     void test108001(){
@@ -14,7 +18,7 @@ public class BankTest {
                 .header("Cookie" , GetCookie.getCookie3())
                 .formParam("funcNo", "108001")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -28,7 +32,7 @@ public class BankTest {
                 .header("Cookie" , GetCookie.getCookie3())
                 .formParam("funcNo", "108009")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -41,9 +45,9 @@ public class BankTest {
                 .filter(SignAgreementTest.myFilter)
                 .header("Cookie" , GetCookie.getCookie3())
                 .formParam("funcNo", "108008")
-                .formParam("trade", "1100001022")
+                .formParam("trade", custid)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -56,9 +60,9 @@ public class BankTest {
                 .filter(SignAgreementTest.myFilter)
                 .header("Cookie" , GetCookie.getCookie3())
                 .formParam("funcNo", "108014")
-                .formParam("trade", "1100001022")
+                .formParam("trade", custid)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("results[0].state", equalTo("14"));
@@ -72,10 +76,10 @@ public class BankTest {
                 .filter(SignAgreementTest.myFilter)
                 .header("Cookie" , GetCookie.getCookie3())
                 .formParam("funcNo", "108015")
-                .formParam("trade", "1100001022")
+                .formParam("trade", custid)
                 .formParam("kind", "2")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -89,7 +93,7 @@ public class BankTest {
                 .header("Cookie" , GetCookie.getCookie3())
                 .formParam("funcNo", "105009")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -107,7 +111,7 @@ public class BankTest {
                 .formParam("op_source", "0")
                 .formParam("user_id", "1021")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("调用成功"));
@@ -124,7 +128,7 @@ public class BankTest {
                 .formParam("codeAddr","%25E5%25B9%25BF%25E4%25B8%259C%25E7%259C%2581%25E6%25B7%25B1%25E5%259C%25B3%25E5%25B8%2582%25E7%25A6%258F%25E7%2594%25B0%25E5%258C%25BA%25E5%2585%2589%25E5%25A4%25A7%25E9%2593%25B6%25E8%25A1%258C%25E5%25A4%25A7%25E5%258E%25A618%25E6%25A5%25BC")
                 .formParam("user_id", "1021")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("调用接口成功"));
@@ -143,7 +147,7 @@ public class BankTest {
                 .formParam("op_source", "0")
                 .formParam("user_id", "1021")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("调用成功"));
@@ -161,7 +165,7 @@ public class BankTest {
                 .formParam("idbegindate","2006-05-11")
                 .formParam("idenddate","2026-05-11")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("调用接口成功"));
@@ -180,7 +184,7 @@ public class BankTest {
                 .formParam("op_source", "0")
                 .formParam("user_id", "1021")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("error_info", equalTo("调用成功"));
@@ -194,9 +198,9 @@ public class BankTest {
                 .filter(SignAgreementTest.myFilter)
                 .header("Cookie" , GetCookie.getCookie3())
                 .formParam("funcNo", "108016")
-                .formParam("trade","1100001022")
+                .formParam("trade",custid)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -209,9 +213,9 @@ public class BankTest {
                 .filter(SignAgreementTest.myFilter)
                 .header("Cookie" , GetCookie.getCookie3())
                 .formParam("funcNo", "108018")
-                .formParam("trade","1100001022")
+                .formParam("trade",custid)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -224,9 +228,9 @@ public class BankTest {
                 .filter(SignAgreementTest.myFilter)
                 .header("Cookie" , GetCookie.getCookie3())
                 .formParam("funcNo", "108012")
-                .formParam("trade","1100001022")
+                .formParam("trade",custid)
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -239,11 +243,11 @@ public class BankTest {
                 .filter(SignAgreementTest.myFilter)
                 .header("Cookie" , GetCookie.getCookie3())
                 .formParam("funcNo", "108013")
-                .formParam("trade","1100001022")
+                .formParam("trade",custid)
                 .formParam("fundpwd","21a6fa8b35e15e9a97285debdf44e9000c1c226618bc3080c3b8dc1334e5eb23a6607bddfbab2b55401f52a2892f81cd0b28e2d27e44a8b55aac3d2ee0376a78554a875285b6c953bd42cfbf36f06a07df2cbac152378f80b4798bfb03bdacf497f0cc581976165bd8e4eaa2c88b587026ca1a0590430cc45174c798398618f7")
                 .formParam("bankcode","2002")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }

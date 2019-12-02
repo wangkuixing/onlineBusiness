@@ -3,6 +3,9 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+/**
+ * 个人资料修改
+ */
 public class PersonalDataTest {
     String custid="1300022253";
     String fundid="1300022253";
@@ -22,7 +25,7 @@ public class PersonalDataTest {
                 .formParam("trade_no", custid)
                 .formParam("kind", "1")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }
@@ -38,7 +41,7 @@ public class PersonalDataTest {
                 .formParam("trade_no", custid)
                 .formParam("branch_no", "0013")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("results[0].isOutTime",equalTo("false"));
@@ -74,7 +77,7 @@ public class PersonalDataTest {
                 .formParam("education", "2")
                 .formParam("occu_type", "02")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0")).body("error_info", equalTo("更改信息成功"));
     }
@@ -96,7 +99,7 @@ public class PersonalDataTest {
                 .formParam("linkman_no", "1")
                 .formParam("linkman_tel", "13823342796")
                 .when()
-                .post("http://t0st.ytzq.com:8443/web/bus/json")
+                .post("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"));
     }

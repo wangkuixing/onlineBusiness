@@ -3,6 +3,9 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+/**
+ * 债券逆回购
+ */
 public class ReverseRepoTest {
 
     String custid="1300022253";
@@ -19,7 +22,7 @@ public class ReverseRepoTest {
                 .queryParam("trade_account", fundid)
                 .queryParam("branch_no", "0013")
                 .when()
-                .get("http://t0st.ytzq.com:8443/web/bus/json")
+                .get("url")
                 .then().log().all()
                 .statusCode(200).body("error_no", equalTo("0"))
                 .body("results.isYZ[0]",equalTo("true"));
