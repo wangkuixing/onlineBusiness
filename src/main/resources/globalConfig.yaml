@@ -1,4 +1,4 @@
 ---
 bus:
-  url: "http://t0st.ytzq.com:8443/web/bus/json"
+  url: "http://url/web/bus/json"
   username:

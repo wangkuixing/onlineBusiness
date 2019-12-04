@@ -15,6 +15,8 @@ public class RiskEvaluationTest {
         //查询风险等级
         given()
                 .log().all()
+                //charles调试
+//                .proxy("http://127.0.0.1:8888")
                 .filter(SignAgreementTest.myFilter)
                 .header("Cookie" , GetCookie.getCookie())
                 .formParam("funcNo", "100904")

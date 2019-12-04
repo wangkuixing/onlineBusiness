@@ -1,22 +1,66 @@
+import io.restassured.response.Response;
+
+import java.util.Map;
+
+import static io.restassured.RestAssured.given;
+
 public class GetCookie {
 
+    public static String cookie;
+    public static String cookie2;
+    public static String cookie3;
+    public static String cookie4;
+
     public static String getCookie(){
-        //1300022253
-        return "Hm_lvt_9e03021ce3af82443836664867b17568=1570517396,1571029945,1571116068,1571618900; JSESSIONID=abcnPwF33ZkbM79RdLa4w; sso_cookie=3o%2F%2BqYJWo0hM8VKiISsYJw%2F5EGb%2F620D3bEGvP6xIc6QI%2F%2BX3d3YqmmHW6U8oHXvVFSqoJ3iRB4v%0A0d%2BAix9QHY68IgW0GQSYSP3slL8lz9pvdOeCsh0%2FWqpeMOF9qQlAkieY5riItZRcLvvvCVzBm2Rs%0Al0dq9%2B%2Fg47NF0TJqEHhCs9QIT2AYsTCY3pqjEVWlqmhHKRzQBvZZFCKxaE%2By0c6nLgUaJOdMwh%2Fw%0AYsJp1m4ecutJZLTcKofE1oOKOVe5%2FOEYwGZLSqkoAkhOq0t1%2FK8n46paJUz9WgtvQzu%2Bn0t9zo0H%0Aq%2FumDR2yxMDr7PSAmkcTmx9i2haEzF5T9axrG5gLYB7DNogHOIHwfYyJ4B4eyU2ysYKwUSfQyChU%0AFuDPuW3QgQo7mnSp4QHbAuus2PewPxAsjwIX4bXK61tHlrKNVv1xY4mHesi8KwmWg59PDpdVDbUy%0AWFUGsxQbsDB3s6hf1L7HcB7UFfnbGlhOK2nRm%2F07qzYpiCrWI%2BwGO3nmhtl1LBirhJ4r%2B18mBnoV%0AmLEnbuf0YEOAjVzKXAo2A3d%2BkqjBZBl%2F%2BC9BIQMT9TKuSWfshenEIqlFc7OdcpwaMsJwrv1POKvL%0A0OJRPbPIx0mdRQEh9Ct8BrqvF9yaz6aricx%2FWRpzhgWBVJcp8g05Os%2Bu0koIV5apvGeg0tYV7Sj9%0AsncShcvq64UzDP5tT3ptqWhTS9INyEE5IzmIpKAIJZPPa14iC4JZDTveML%2BBBCCZJHBJ0oburBOH%0AVYjYG6sK5ojIXGG%2BhtfTuV14VOut3w5HkJaK8lCW2Vx0s6XZIJIpW4DMe%2F5AtFbJGQTg%2FgR2IQBS%0ACRkzrBIx1obQ46cMtidfVCBDAFfHN4yNaE0Q0ycF8twh%2FmAD3HhuI3cGtgSLQ7trir5tECNcTPTd%0AUejZEdM3K5nUZrFag7r8J1AHb5RkbJdHavfv4Pr5vLjPy5Ih1OxC22mNLf96n%2BgLS02gPxvVbxZU%0AE%2BjRp9SFP8Tt6dFm7NeN4owv4SnK%2For61oR%2BmClTBV3%2F%2FLrz%2BtEzdAh6jZxwtFNbWhpclo5QukRl%0AnZ5HFwrG%2F9GKyQ2InZiyOh4AmWrOljV5hMkEUWKywNyqb9K8FFK%2F06PJ; info=%7B%22sfbd%22:%221%22,%22rzrq_creditAccount%22:%221390000235%22,%22net_addr%22:%22113.106.86.142%22,%22crm_name%22:%22%E9%99%88%E8%BE%89%22,%22trade_account%22:%221300022253%22,%22crm_no%22:%226423083%22,%22trade_name%22:%22%E9%99%88%E8%BE%89%22,%22branch_no%22:%220013%22,%22device_info%22:%22Mozilla/5.0%20(Windows%20NT%2010.0@#@%20Win64@#@%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/77.0.3865.120%20Safari/537.36%22,%22crm_client_type%22:%220%22,%22identity_exp_date%22:%2220260812%22,%22branch_name%22:%22%E4%B8%8A%E6%B5%B7%E5%98%89%E5%96%84%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8%22,%22trade_no%22:%221300022253%22,%22wealth_product%22:%22%22,%22wealth_level%22:%220%22,%22identity_idno%22:%22310230197711013718%22%7D; loginFlag=true; change_type=1; codetime_userid=13793; tradeAccount=1300022253; indexFlag=mdfFundPwd; investor=%7B%22risklevelvaliddate%22:%2220211010%22,%22investmentperiod%22:%222%22,%22lowriskflag%22:%220%22,%22investmenttype%22:%2201%22,%22exincometype%22:%22%22,%22risklevel%22:%223%22,%22trdprofvaliddate%22:%223000/12/31%22,%22investortype%22:%220%22,%22riskpropright%22:%224%22%7D";
+        if (cookie == null){
+            cookie=getCookieWithLogin("1300022253");
+        }
+        return cookie;
     }
 
     public static String getCookie2(){
-        //1100001235
-        return "Hm_lvt_9e03021ce3af82443836664867b17568=1570517396,1571029945,1571116068,1571618900; JSESSIONID=abcuG5XKx88sIbBo8kq4w; shaisExist=1; szaisExist=1; shaclass=off; szaclass=off; deal_sure=0; deal_warn=0; deal_prom=0; mobileno=; _custname=; change_type=1; knlg_not_pass_times=1; brokerage=; sso_cookie=3o%2F%2BqYJWo0gv92GU7c6Npw%2F5EGb%2F620D3bEGvP6xIc6QI%2F%2BX3d3YqmmHW6U8oHXvVFSqoJ3iRB6B%0AESRZC%2FblYSRi%2FutmEpax%2FIZ7vVeu%2FW59cNrGg83VXwQ0bTkg4HiscFEUBgh%2B0FPw0MnhSwg5waWl%0Aw25Z1%2BABH%2FBtqcAHvsLwuMZOSIoHpKpoRykc0Ab2tPuc62f9LDL6ilZLAl7O9YGmm8JX9vRK5rQt%0Akwg6q5zXa5xdoOYWxidCMUiMT5Iiin7vXnVYFkWRadaBmDsLfYrzxTkjMTVFF63A3gsydBa3NZa%2F%0Ae1y0UxAFxzmvXTT2RfGpqlwPn4D08IccxcvdsH7z5C5ZF5MjEIvvdoSB7LU%2BLEc9DbyAe2FxPOEz%0AeEUgmad%2FX2oeGiwlR%2F2AJ%2B%2FQmpi1uGEca5XYEfr5t0Ia%2FM1cVg6CRdM80M7FdhZSVGNMzKkMD8QK%0ATW30aEcBIxvqHC9sEgVpYYKaUlSsG0UIkfxBavF31vPu5y8TfTrLVMh6s3V1Buw41psXeSCbxl2A%0AjVi0glVOE6TDgWTebk294ZGe%2BtEGInQfCD42vMBTsl%2FHuftSNLyUdCcNTdDDx2VG%2BZ9Hrg0q1SIV%0AZWNdLXs6%2F7D9rkZUaMcR81DjPidLwsrVZ9Ol8tMbOn5PbmS8d3m3OOtLUFc2zKSdHmMklgeTT9mx%0AG6VasuavoXTVzr9KRYF9COLfyThT7UwAFkDL4iGT2%2FzmflS4CXtqY36NbdMgUWbZyFUhYdXobsCn%0AyWRzAWqwo5KPMaFSs%2FZEYpLQsZ82ZuxukE%2BLRpZ4GBL59Y6X1Zi64XT1XaKZv7IzlWVBwWJjmDwq%0AkbapiwA1PKtiGoszVmk9qOv1janp%2Fz9p8DthnEn0wjNC91A8l0i7nxEHb%2BnNSP4FCo7YbzJuPqY2%0AVTfV3ltpgrKL%2BVSrEkCJXXGlGpQNJ3kZ3Z1KxbtxCJGIwo%2BcA1NTJms13JUESCS2YFoMgazCyI6w%0AHBv9scyrrNVrxvcNaw5Ugoz1lrecFHrWOImHxs0NKtmdNux6n%2BgLS02gPw9lDggGYH4to8VjIH1y%0A2TRMduKE5qMYxWCs9KUogUmKP4HAd551k7VJO539tZ%2Fneub72t8NOGW1; info=%7B%22sfbd%22:%220%22,%22rzrq_creditAccount%22:%220%22,%22net_addr%22:%22113.106.86.142%22,%22crm_name%22:%22%E9%82%B9%E5%87%8C%E4%BA%91%22,%22trade_account%22:%221100001235%22,%22crm_no%22:%2211237%22,%22trade_name%22:%22%E9%82%B9%E5%87%8C%E4%BA%91%22,%22branch_no%22:%220012%22,%22device_info%22:%22Mozilla/5.0%20(Windows%20NT%2010.0@#@%20Win64@#@%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/77.0.3865.120%20Safari/537.36%22,%22crm_client_type%22:%220%22,%22identity_exp_date%22:%2220240715%22,%22branch_name%22:%22%E6%B7%B1%E5%9C%B3%E5%BD%A9%E7%94%B0%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8%22,%22trade_no%22:%221100001235%22,%22wealth_product%22:%22%22,%22wealth_level%22:%220%22,%22identity_idno%22:%22440301195911072118%22%7D; loginFlag=true; tradeAccount=1100001235; indexFlag=hk_stk_trd_auth_sign; investor=%7B%22risklevelvaliddate%22:%2220200130%22,%22investmentperiod%22:%22%22,%22lowriskflag%22:%220%22,%22investmenttype%22:%2201,02,03,04,99%22,%22exincometype%22:%22%22,%22risklevel%22:%224%22,%22trdprofvaliddate%22:%223000/12/31%22,%22investortype%22:%220%22,%22riskpropright%22:%22%22%7D";
+        if (cookie == null){
+            cookie=getCookieWithLogin("1100001235");
+        }
+        return cookie2;
     }
 
     public static String getCookie3(){
-        //1100001022
-        return "Hm_lvt_9e03021ce3af82443836664867b17568=1570517396,1571029945,1571116068,1571618900; change_type=1; knlg_not_pass_times=0; brokerage=; JSESSIONID=abcSVru6DltO6-2_9wA4w; sso_cookie=3o%2F%2BqYJWo0hM8VKiISsYJw%2F5EGb%2F620D3bEGvP6xIc6QI%2F%2BX3d3YqmmHW6U8oHXvVFSqoJ3iRB6W%0AEWh%2BY1frH%2FJmB8uJExJaSP3slL8lz9oSiCpdbrwXwxXd2aMKd9c87BnSqseQBDzmmiq6iSav2RJA%0AiV1xpRqUtnA8WBBYbsQ56i1IcgLti6RcTBTWrKvmx4HPZXfnRY8Mw16sl4ptcndQX%2Bl7BtRF%2BaoU%0AZWMz5Yj785iQ07qNAc4DCpjO4c9PUQ0lITSdDXMuYWwSv8hpoPGuwap4u180j29xHe35TTUr6i68%0AbBijTfscxnNgkI8B%2FZo7Z7xC7SqR70rFp%2B%2BkNWo33FOvNY4CpYNqyfoO%2BagBqTdDFT9Dr2ia2xM9%0APZVoq7P3Lo3XDBcuO%2Frb%2BFAS7xKDdoxq%2FwSmUILtxEF0zROqFf4PFIljPy9jFjqbWBlNl52C9WhL%0Aw48JBNMtusLFsf9YPObdsN8WWxcuCNnm2fLRe7ql4J9VuYHg2gvr9kaBRLzQ8BwOeeDLfBxzWD9B%0ARerFZWHoGwnwqca%2FivTxmX7HejqEwlPwr8bsGVdCd2oxg%2FnKGdCq8vRMFoHY3pyk4nWeN%2B8nXBg7%0Afi7oEBeMJO%2FV6pie9vY0ZGfpTzfzmUx9z%2FUZ9Q3%2F7dDdKzjfwaEscvnT%2BNXsw2W3CE51dAj8Uc9k%0AAJt%2BuRYrVMeAcogUiCEkeVFGYuqKJW09Mvruqb70k45wWByr9xEJcyTRpJtZ1ZcLQEJNMLAFrxGl%0A9fmRiDUm%2Fu31UyaHUnCkGdzOK9%2BYuDLSrnujPMpCmNbr0XfF7QfHecxEkN1yNUcXCsb%2F0YrJqAmw%0AwSSncj1solFv1d3SMluBv%2FFiqTfURXOznXKcGjJFwRYHw2%2BS8pwLlivql91r9wTWK7QYCNiGNy6s%0A0Uu%2FtVtmsr0eRl6WoendmcXjdj7tcJrvrtyhRv0ZltJcKqTJ%2Fi5NnHwezJtJ4StY9hpAKWTyOCAC%0ASW7%2FTNU7JkArQ9JXW9wsQ73iLSv3Elbpy6NTvk3VnXtg%2BkV9XvMt1N9uJ%2BO7HHcUz2r0W6y7RLtj%0AYdYpW4DMe%2F5AtMm0DJiKh37FyhOLG4fb7cEwZ9bI3PuxaVJ%2BwrJlCiLxWK7kAPNisvo%3D; info=%7B%22sfbd%22:%221%22,%22rzrq_creditAccount%22:%221290000015%22,%22net_addr%22:%22113.106.86.142%22,%22crm_name%22:%22%E4%BD%95%E8%89%BA%E5%B9%B3%22,%22trade_account%22:%221100001022%22,%22crm_no%22:%2211024%22,%22trade_name%22:%22%E4%BD%95%E8%89%BA%E5%B9%B3%22,%22branch_no%22:%220012%22,%22device_info%22:%22Mozilla/5.0%20(Windows%20NT%2010.0@#@%20Win64@#@%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/77.0.3865.120%20Safari/537.36%22,%22crm_client_type%22:%220%22,%22identity_exp_date%22:%2220260511%22,%22branch_name%22:%22%E6%B7%B1%E5%9C%B3%E5%BD%A9%E7%94%B0%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8%22,%22trade_no%22:%221100001022%22,%22wealth_product%22:%22%22,%22wealth_level%22:%220%22,%22identity_idno%22:%22430103197203044588%22%7D; loginFlag=true; tradeAccount=1100001022; preChangeCard=%7B%221100001022%22:%7B%22balance%22:%22641.95%7C641.95%22,%22flow_create_date%22:%222018-07-19%2014:53:53%22,%22flow_status%22:%2214%22,%22contract_status%22:%220%22,%22flag%22:false,%22main_flag%22:%221%22,%22cuacct_status%22:%220%22,%22bank_acct%22:%226225887830365561%22,%22ext_org%22:%222002%22,%22isSuccess%22:false,%22cuacct_code%22:%221100001022%22,%22yzflag%22:false%7D%7D; yzzz=false; indexFlag=sfcg; investor=%7B%22risklevelvaliddate%22:%2220211021%22,%22investmentperiod%22:%221%22,%22lowriskflag%22:%220%22,%22investmenttype%22:%2202,03%22,%22exincometype%22:%22%22,%22risklevel%22:%224%22,%22trdprofvaliddate%22:%223000/12/31%22,%22investortype%22:%220%22,%22riskpropright%22:%22%22%7D";
+        if (cookie == null){
+            cookie=getCookieWithLogin("1100001022");
+        }
+        return cookie3;
     }
 
     public static String getCookie4(){
-        //1100003755
-        return "unlock_ggqq_pwd_fundid=1370000003; unlock_ggqq_pwd_idno=330106196409230512; JSESSIONID=abcPuS2h9CEFM6FKHRq6w; sso_cookie=3o%2F%2BqYJWo0hM8VKiISsYJw%2F5EGb%2F620DXhi1ZTIatEb6B3a9VMbvRyRLYla6Txp7fq6f6sp8u0Si%0A5qjOfoRcJEYvlbpPGFQ8O0kr1VLS7u3nwPOdi8DQk1QMUW%2FvJnm0GvgH8BkwIvE6P5%2BldbNh03wH%0ANGSs%2BgZDHzFHuPFOWmQZB62Qo4TtmNKi8OdQK8X5t93NAjqkMVtQ0qrU48IqOuwZ0qrHkAQ81RmV%0A5HpX94SbqY3YOqbiWITHkujbk8TlpbLyFU9OOJfsqThp%2BiqyOyQfOEtDtNUUzl4wydZBczqh70sT%0AXFB7wdNY6SPuNIYb2Ltfa0CHTs3keGg1ROWy9iNpeQB7Y0i%2F3AUNsjktAenT232I9d7TQOZlqMje%0A%2FKA7wmnjxcBav6eXaWbiF0mbU44OFlwgZJlSuTWQzN3rTs57eMK2vgTX45m8BvxL3Sj9VujgefN9%0A7o%2FsPHvnBUBYz0J6JI2T9RDswGLfbdc7zWO8MmbizozTYjmEjWDJLmN8ik8%2FQbZvM98S9DERb1E1%0AfSc5aD%2FDnrM3dYbCgva4aO44CNh9Jd%2F%2Flv4x82H899sDkjLD76OEqDW0a2B3K0qiHjn1mWQ3K7jP%0AjKlsO0L73IMiMrSl9JQ7T4s75sx%2BKthA32sOvSioxBmjPdDXquErdlpuA%2Bzn37%2Blg2g4tRZcFnwb%0AIs9H5Vw2QDaOl09n8GWA7M4Oknezdrsy%2FX6X95jGueP2UPsdn5jAAxydSAdJtbhKad4r%2FTf4ttvo%0A1IOMDSxr2O1wtrboH8F30p8GNw6Hqf%2FqtQWi0lP%2FrfO1zcQZY%2Fr%2Fr%2FOmPBZGQYUSeMIKoDW2a7pS%0Au5oeFI5iZaHkDpvfdZTCLFQoDn8JZ18QlA0%2FQBF034JtMX3tC%2Fw3Bbg4VM%2FIGqWhX6Chm41IEQTi%0AJRrL5NAHHyWEm%2ByDOcIHPekd%2Fld5vXUr7lDQT%2BwZ0qrHkAQ85lCSazZ%2BzOEgMCJzrflBBRhmecLB%0A%2FQMKTdtOf52x9S61%2F93QxKePWhsa%2B7MZMD1IDqOXFdu%2BPheDU0HUVlmR%2BEEnpEvIpKMDejR9p6uR%0AuTl0%2F79i4uP7Dqwju7eoiJ3lva2%2FvYwsdpboRnVtty2sJE4T16CWbGPIEnPyC57ymHPn%2FIaY5gFR%0AVvCNohTn8sqL; info=%7B%22sfbd%22:%221%22,%22rzrq_creditAccount%22:%221290000019%22,%22net_addr%22:%22text%252Fhtml%253B%2520charset%253DUTF-8%22,%22crm_name%22:%22%E7%BD%97%E6%BA%90%E5%BE%B7%22,%22trade_account%22:%221100003755%22,%22crm_no%22:%2213029%22,%22trade_name%22:%22%E7%BD%97%E6%BA%90%E5%BE%B7%22,%22branch_no%22:%220012%22,%22device_info%22:%22Mozilla/5.0%20(Windows%20NT%2010.0@#@%20Win64@#@%20x64)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/78.0.3904.108%20Safari/537.36%22,%22crm_client_type%22:%220%22,%22identity_exp_date%22:%2230001231%22,%22branch_name%22:%22%E6%B7%B1%E5%9C%B3%E5%BD%A9%E7%94%B0%E8%B7%AF%E8%AF%81%E5%88%B8%E8%90%A5%E4%B8%9A%E9%83%A8%22,%22trade_no%22:%221100003755%22,%22wealth_product%22:%22%22,%22wealth_level%22:%220%22,%22identity_idno%22:%22440921196001151215%22%7D; loginFlag=true; tradeAccount=1100003755; indexFlag=rzrq_contract; investor=%7B%22risklevelvaliddate%22:%2220211118%22,%22investmentperiod%22:%221%22,%22lowriskflag%22:%220%22,%22investmenttype%22:%2201,99%22,%22exincometype%22:%22%22,%22risklevel%22:%223%22,%22trdprofvaliddate%22:%223000/12/31%22,%22investortype%22:%220%22,%22riskpropright%22:%22%22%7D";
+        if (cookie == null){
+            cookie=getCookieWithLogin("1100003755");
+        }
+        return cookie4;
+    }
+
+    public static String getCookieWithLogin(String userAccount){
+        Response response=given()
+                .log().all()
+                .formParam("funcNo", "100201")
+                .formParam("login_name", userAccount)
+                .formParam("login_password","147258")
+                .formParam("img_ticket","8888")
+                .formParam("password_encrypt_type","normal")
+                .formParam("safe_type","1")
+                .formParam("dynamic_code","")
+                .formParam("user_mac","")
+                .formParam("user_disk_id","")
+                .formParam("user_ip","")
+                .formParam("user_agent","")
+                .when()
+                .post("url")
+                .then().log().all()
+                .statusCode(200).extract().response();
+
+        Map<String, String> map=response.getCookies();
+        String s=map.get("sso_cookie");
+        String sso_cookie="sso_cookie" + "=" + s;
+        return sso_cookie;
     }
 }
